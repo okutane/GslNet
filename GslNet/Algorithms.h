@@ -24,13 +24,16 @@ namespace GslNet
 		private:
 			AlgorithmWithDerivatives(const gsl_multimin_fdfminimizer_type *type);
 		public:
-			static AlgorithmWithDerivatives SteepestDescent =
+			static const AlgorithmWithDerivatives SteepestDescent =
 				AlgorithmWithDerivatives(gsl_multimin_fdfminimizer_steepest_descent);
 			static const AlgorithmWithDerivatives ConjugatePR =
 				AlgorithmWithDerivatives(gsl_multimin_fdfminimizer_conjugate_pr);
-			/*static const AlgorithmWithDerivatives ConjugateFR = gsl_multimin_fdfminimizer_conjugate_fr;
-			static const AlgorithmWithDerivatives VectorBfgs = gsl_multimin_fdfminimizer_vector_bfgs;
-			static const AlgorithmWithDerivatives VectorBfgs2 = gsl_multimin_fdfminimizer_vector_bfgs2;*/
+			static const AlgorithmWithDerivatives ConjugateFR =
+				AlgorithmWithDerivatives(gsl_multimin_fdfminimizer_conjugate_fr);
+			static const AlgorithmWithDerivatives VectorBfgs =
+				AlgorithmWithDerivatives(gsl_multimin_fdfminimizer_vector_bfgs);
+			static const AlgorithmWithDerivatives VectorBfgs2 =
+				AlgorithmWithDerivatives(gsl_multimin_fdfminimizer_vector_bfgs2);
 		};
 	}
 }
