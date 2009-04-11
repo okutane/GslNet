@@ -94,9 +94,9 @@ namespace GslNet
 			void Iterate()
 			{
 				int result = gsl_multimin_fdfminimizer_iterate(_pointer);
-				if(result != 0)
+				if(result)
 				{
-					throw gcnew System::Exception("Exception in FdfMinimizer.Iterate");
+					throw gcnew System::Exception(gcnew System::String(gsl_strerror(result)));
 				}
 			}
 
