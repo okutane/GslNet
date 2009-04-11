@@ -1,0 +1,7 @@
+syntax: glob
+GslNet/*.user
+GslNet.suo
+GslNet.ncb
+GslNet\Debug/*
+GslNet.Tests\obj\Debug/*
+Debug/*
