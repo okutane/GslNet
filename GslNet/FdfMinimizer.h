@@ -4,6 +4,7 @@
 
 #include "GslVector.h"
 #include "Algorithms.h"
+#include "IFunction.h"
 
 using namespace System::Runtime::InteropServices;
 
@@ -23,29 +24,27 @@ namespace GslNet
 			
 		ref class FunctionWrapper
 		{
-			FFunction ^_function;
-			DFFunction ^_gradient;
+			IFunctionWithGradient ^_function;
 		public:
-			FunctionWrapper(FFunction ^function, DFFunction ^gradient)
+			FunctionWrapper(IFunctionWithGradient ^function)
 			{
 				_function = function;
-				_gradient = gradient;
 			}
 
 			double f(const gsl_vector *x, void *params)
 			{
-				return _function(gcnew GslVector(const_cast<gsl_vector*>(x)));
+				return _function->Evaluate(gcnew GslVector(const_cast<gsl_vector*>(x)));
 			}
 
 			void df(const gsl_vector *x, void *params, gsl_vector *g)
 			{
-				_gradient(gcnew GslVector(const_cast<gsl_vector*>(x)), gcnew GslVector(g));
+				_function->EvaluateGradient(gcnew GslVector(const_cast<gsl_vector*>(x)), gcnew GslVector(g));
 			}
 
 			void fdf(const gsl_vector *x, void *params, double *f, gsl_vector *g)
 			{
-				*f = _function(gcnew GslVector(const_cast<gsl_vector*>(x)));
-				_gradient(gcnew GslVector(const_cast<gsl_vector*>(x)), gcnew GslVector(g));
+				*f = _function->EvaluateValueWithGradient(gcnew GslVector(const_cast<gsl_vector*>(x)),
+					gcnew GslVector(g));
 			}
 		};
 
@@ -58,9 +57,9 @@ namespace GslNet
 			_dfDelegate ^_dfD;
 			_fdfDelegate ^_fdfD;
 		public:
-			Fdf(FFunction ^function, DFFunction ^gradient, int n)
+			Fdf(IFunctionWithGradient ^function, int n)
 			{
-				_wrapper = gcnew FunctionWrapper(function, gradient);
+				_wrapper = gcnew FunctionWrapper(function);
 				_fdf = new gsl_multimin_function_fdf;
 
 				_fD = gcnew _fDelegate(_wrapper, &FunctionWrapper::f);

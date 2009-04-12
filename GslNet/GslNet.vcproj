@@ -203,6 +203,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\IFunction.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Stdafx.cpp"
 				>
 				<FileConfiguration
@@ -242,6 +246,10 @@
 			</File>
 			<File
 				RelativePath=".\GslVector.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IFunction.h"
 				>
 			</File>
 			<File
