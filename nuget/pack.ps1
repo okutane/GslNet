@@ -9,4 +9,4 @@ $content = $content -replace '\$version\$',$versionStr
 
 $content | Out-File $root\nuget\GslNet.compiled.nuspec
 
-& $root\NuGet\NuGet.exe pack $root\nuget\GslNet.compiled.nuspec
+& nuget pack $root\nuget\GslNet.compiled.nuspec
