@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GslNet", "GslNet\GslNet.vcproj", "{7D877E38-B495-47D0-8D84-15925C4697F6}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GslNet", "GslNet\GslNet.vcxproj", "{7D877E38-B495-47D0-8D84-15925C4697F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GslNet.Tests", "GslNet.Tests\GslNet.Tests.csproj", "{D66C6054-0BB4-4839-B1E7-D318180848D5}"
 EndProject
