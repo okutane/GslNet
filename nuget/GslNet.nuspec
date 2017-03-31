@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>GslNet</id>
+    <version>$version$</version>
+    <projectUrl>https://github.com/okutane/GslNet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <file src="..\GslNet\bin\Debug\GslNet.dll" target="lib\portable-windows8+net45" />
+    <file src="..\GslNet\bin\Debug\GslNet.dll" target="lib\portable-net45+win+wp8+wpa81" />
+    <file src="..\GslNet\bin\Debug\GslNet.dll" target="lib\portable-net45+sl50+MonoAndroid10+MonoTouch10" /
+  </files>
+</package>
