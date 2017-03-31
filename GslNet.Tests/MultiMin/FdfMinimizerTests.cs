@@ -1,12 +1,18 @@
-﻿using GslNet.MultiMin;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using NUnit.Framework;
+
+using GslNet.MultiMin;
 
 namespace GslNet.Tests.MultiMin
 {
-    [TestClass]
+    [TestFixture]
     public class FdfMinimizerTests
     {
-        [TestMethod]
+        [Test]
         public void TestMinimize()
         {
             GslVector vector = new GslVector(2);
