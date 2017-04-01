@@ -1,0 +1,15 @@
+version: 1.0.{build}
+before_build:
+- ps: nuget restore
+build:
+  project: GslNet.sln
+  verbosity: minimal
+after_test:
+- ps: >-
+    packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"GslNet.Tests\bin\Debug\GslNet.Tests.dll" -output:.\GslNet_coverage.xml
+
+    "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
+
+    pip install codecov
+
+    codecov -f "GslNet_coverage.xml" -X gcov
