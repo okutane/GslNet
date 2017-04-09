@@ -18,15 +18,19 @@ namespace GslNet.Tests.MultiMin
             GslVector vector = new GslVector(2);
             vector[0] = 1;
             vector[1] = 1;
-            FdfMinimizer minimizer = new FdfMinimizer(AlgorithmWithDerivatives.ConjugatePR, 2);
-            Fdf fdf = new Fdf(new Circle(), 2);
-            minimizer.Initialize(fdf, vector, 1, 0.1);
-            for (int i = 0; i < 2; i++)
+            using (FdfMinimizer minimizer = new FdfMinimizer(AlgorithmWithDerivatives.ConjugatePR, 2))
             {
-                minimizer.Iterate();
+                using (Fdf fdf = new Fdf(new Circle(), 2))
+                {
+                    minimizer.Initialize(fdf, vector, 1, 0.1);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        minimizer.Iterate();
+                    }
+                }
+                Assert.AreEqual(0, minimizer.X[0], 1e-15);
+                Assert.AreEqual(0, minimizer.X[1], 1e-15);
             }
-            Assert.AreEqual(0, minimizer.X[0], 1e-15);
-            Assert.AreEqual(0, minimizer.X[1], 1e-15);
         }
 
         private class Circle : IFunctionWithGradient
